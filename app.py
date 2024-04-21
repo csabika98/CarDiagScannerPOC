@@ -9,7 +9,7 @@ app = Flask(__name__)
 # Set up the InferenceHTTPClient
 CLIENT = InferenceHTTPClient(
     api_url="https://detect.roboflow.com",
-    api_key="zMmwbyFRSwxKlMTKIRGV"
+    api_key="apikey"
 )
 
 @app.route('/')
