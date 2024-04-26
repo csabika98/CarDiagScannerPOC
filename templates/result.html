@@ -6,19 +6,99 @@
     <title>Car Damage Result</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .loss-analysis {
+            background-color: #fff;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .damage-details, .cost-details {
+            margin-top: 20px;
+        }
+        .damage-item {
+            background-color: #f7f7f7;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        .table {
+            margin-bottom: 0;
+        }
+        .container {
+            
+            background-color: #fbe5d6 !important;
+           
+        }
+
+    </style>
 </head>
 <body>
     <div class="container">
-        <h1 class="mt-5">Car Damage Result</h1>
-        <img src="{{ original_image_url }}" alt="Original Image" class="img-fluid mt-3">
+        <h1 class="text-center mt-5">Car Damage Result</h1>
         
+        <!-- Vehicle Information -->
+        <div class="loss-analysis">
+            <h2>Loss Analysis</h2>
+            <table class="table">
+                <tr>
+                    <th>Make</th>
+                    <th>Model</th>
+                    <th>Year</th>
+                </tr>
+                <tr>
+                    <td>{{ make }}</td>
+                    <td>{{ model }}</td>
+                    <td>{{ year }}</td>
+                </tr>
+            </table>
+        </div>
         
-        <img src="{{ modified_image_url }}" alt="Modified Image" class="img-fluid mt-5">
+        <!-- Damage Details -->
+        <div class="damage-details">
+            <h2>Identified Damages</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="{{ modified_image_url }}" alt="Modified Image" class="img-fluid">
+                </div>
+                <div class="col-md-6">
+                    {% for damage in damages %}
+                    <div class="damage-item">
+                        <h4>Damage Details</h4>
+                        <table class="table">
+                            <tr>
+                                <th>Part</th>
+                                <td>{{ damage.part }}</td>
+                            </tr>
+                            <tr>
+                                <th>Percentage of Damage</th>
+                                <td>{{ damage.percentage_of_damage }}</td>
+                            </tr>
+                            <tr>
+                                <th>Recommendation</th>
+                                <td>{{ damage.recommendation }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Optional: Add Cost Details if you have that information -->
+        <!-- ... -->
+
+        <div class="text-center mt-5">
+            <a href="{{ url_for('get_original_image', original_image_url=original_image_url) }}" class="btn btn-primary">Download Original Image</a>
+            <a href="{{ url_for('get_modified_image', modified_image_url=modified_image_url) }}" class="btn btn-primary">Download Annotated Image</a>
+        </div>
         
     </div>
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+
 
 

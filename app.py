@@ -10,9 +10,9 @@ import supervision as sv
 
 app = Flask(__name__)
 
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'carscanneralpha-409a14ea6552.json'
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'cred.json'
 storage_client = storage.Client()
-rf = Roboflow(api_key="apikey")
+rf = Roboflow(api_key="zMmwbyFRSwxKlMTKIRGV")
 
 @app.route('/')
 def index():
@@ -41,6 +41,7 @@ def upload_image():
         result = model.predict(temp_file_path, confidence=40, overlap=30).json()
 
         detections = sv.Detections.from_inference(result)
+        print("Detections:", detections)  #
         original_image = cv2.imread(temp_file_path)
         annotated_image = annotate_image(original_image, detections)
 
@@ -52,10 +53,32 @@ def upload_image():
             modified_blob.upload_from_file(f)
         modified_signed_url = modified_blob.generate_signed_url(expiration=expiration_time, method='GET')
 
+        make = request.form.get('make')
+        model = request.form.get('model')
+        year = request.form.get('year')
+
+        damages = []
+        for i in range(len(detections.confidence)):
+            confidence = detections.confidence[i]
+            label = detections.data['class_name'][i]  # Access class names using the data attribute
+            confidence_percent = round(confidence * 100, 2)
+
+            damages.append({
+                'part': label,
+                'percentage_of_damage': f"{confidence_percent}%",
+                'recommendation': 'Replace' if confidence > 0.5 else 'Repair'  # Using 0.5 as threshold
+            })
+
         os.unlink(temp_file_path)
         os.unlink(temp_modified_file_path)
 
-        return render_template('result.html', original_image_url=signed_url, modified_image_url=modified_signed_url)
+        return render_template('result.html', 
+                               original_image_url=signed_url, 
+                               modified_image_url=modified_signed_url,
+                               make=make, 
+                               model=model, 
+                               year=year,
+                               damages=damages)
 
 def annotate_image(original_image, detections):
     bounding_box_annotator = sv.BoundingBoxAnnotator()
@@ -67,8 +90,8 @@ def annotate_image(original_image, detections):
             confidence_percent = int(confidence * 100)  # Convert to percentage
 
             # Smaller font size and thinner text
-            font_scale = 0.6
-            thickness = 1
+            font_scale = 1.0
+            thickness = 2
 
             # Calculate text width & height to create a background rectangle
             text = f"{label} ({confidence_percent}%)"
