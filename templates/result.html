@@ -68,11 +68,11 @@
                         <h4>Damage Details</h4>
                         <table class="table">
                             <tr>
-                                <th>Part</th>
+                                <th>Indentified damages</th>
                                 <td>{{ damage.part }}</td>
                             </tr>
                             <tr>
-                                <th>Percentage of Damage</th>
+                                <th>Percentage of Confidence</th>
                                 <td>{{ damage.percentage_of_damage }}</td>
                             </tr>
                             <tr>
@@ -89,10 +89,7 @@
         <!-- Optional: Add Cost Details if you have that information -->
         <!-- ... -->
 
-        <div class="text-center mt-5">
-            <a href="{{ url_for('get_original_image', original_image_url=original_image_url) }}" class="btn btn-primary">Download Original Image</a>
-            <a href="{{ url_for('get_modified_image', modified_image_url=modified_image_url) }}" class="btn btn-primary">Download Annotated Image</a>
-        </div>
+      
         
     </div>
     <!-- Bootstrap JS -->
