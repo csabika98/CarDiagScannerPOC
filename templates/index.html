@@ -32,15 +32,17 @@
     <div class="container">
         <h1 class="mt-5">ClaimTheia - Loss Identification</h1>
         
-            <!-- Loss Details -->
+        
+           
+
+        <form action="/upload" method="post" enctype="multipart/form-data" class="mt-3">
+                <!-- Loss Details -->
             <div class="form-group" style="width: fit-content;">
                 <input type="text" class="form-control" id="makeInput" name="make" placeholder="Make">
                 <input type="text" class="form-control" id="modelInput" name="model" placeholder="Model">
                 <input type="text" class="form-control" id="yearInput" name="year" placeholder="Year">
             </div>
-            <div id="uploadArea"></div> 
-        <form action="/upload" method="post" enctype="multipart/form-data" class="mt-3">
-            
+            <div id="uploadArea"></div>
                 <div class="car-outline"></div> <!-- Placeholder for car outline image -->
                 <div class="upload-fields">
                      <!-- Image Uploads -->
