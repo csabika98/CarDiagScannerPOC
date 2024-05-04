@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'cloud_servive_json_file'
 storage_client = storage.Client()
-rf = Roboflow(api_key="apikey")
+rf = Roboflow(api_key="zMmwbyFRSwxKlMTKIRGV")
 
 @app.route('/')
 def index():
@@ -36,11 +36,12 @@ def upload_image():
         expiration_time = datetime.datetime.utcnow() + datetime.timedelta(hours=1)
         signed_url = blob.generate_signed_url(expiration=expiration_time, method='GET')
 
-        project = rf.workspace().project("cardamage-l4vtd")
+        project = rf.workspace().project("rideit")
         model = project.version(1).model
         result = model.predict(temp_file_path, confidence=40, overlap=30).json()
 
         detections = sv.Detections.from_inference(result)
+        print("Detections:", detections)  # Add this line to inspect the structure
         original_image = cv2.imread(temp_file_path)
         annotated_image = annotate_image(original_image, detections)
 

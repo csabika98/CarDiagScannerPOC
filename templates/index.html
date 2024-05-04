@@ -31,35 +31,44 @@
 <body>
     <div class="container">
         <h1 class="mt-5">ClaimTheia - Loss Identification</h1>
-        
-        
-           
+
+        <a href="/upload_csv">Upload your own dataset</a>
+
+        <div class="form-group">
+            <label for="carSelect">Select Car:</label>
+            <select class="form-control" id="carSelect" name="car_id">
+                {% for car in cars %}
+                <option value="{{ car.id }}">{{ car.make }} {{ car.model }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
 
         <form action="/upload" method="post" enctype="multipart/form-data" class="mt-3">
-                <!-- Loss Details -->
+            <!-- Loss Details -->
             <div class="form-group" style="width: fit-content;">
                 <input type="text" class="form-control" id="makeInput" name="make" placeholder="Make">
                 <input type="text" class="form-control" id="modelInput" name="model" placeholder="Model">
                 <input type="text" class="form-control" id="yearInput" name="year" placeholder="Year">
             </div>
             <div id="uploadArea"></div>
-                <div class="car-outline"></div> <!-- Placeholder for car outline image -->
-                <div class="upload-fields">
-                     <!-- Image Uploads -->
+            <div class="car-outline"></div> <!-- Placeholder for car outline image -->
+            <div class="upload-fields">
+                <!-- Image Uploads -->
                 <div class="custom-file" style="width: fit-content;">
                     <input type="file" class="custom-file-input" id="imageUpload" name="file" accept=".jpg, .jpeg, .png">
                     <label class="custom-file-label" for="imageUpload">Upload Pic of Front of Car</label>
                 </div>
-                
+
                 <div class="custom-file" style="width: fit-content;">
                     <input type="file" class="custom-file-input" id="imageUpload_2" name="file" accept=".jpg, .jpeg, .png">
                     <label class="custom-file-label" for="imageUpload_2">Upload Picture of Front Door</label>
                 </div>
             </div>
-        
-        
-         
-            
+
+
+
+
             <button type="submit" class="btn btn-primary" style="margin: 20px;">Submit</button>
         </form>
     </div>
