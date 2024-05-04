@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'cloud_servive_json_file'
 storage_client = storage.Client()
-rf = Roboflow(api_key="zMmwbyFRSwxKlMTKIRGV")
+rf = Roboflow(api_key="apikey")
 
 @app.route('/')
 def index():
