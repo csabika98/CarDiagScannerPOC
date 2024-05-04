@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, send_file
+from flask import Flask, render_template, request, redirect, url_for, send_file, session
 from roboflow import Roboflow
 import cv2
 import os
@@ -7,16 +7,46 @@ import datetime
 from google.cloud import storage
 import numpy as np
 import supervision as sv
+import pandas as pd
+from flask_sqlalchemy import SQLAlchemy
+from dotenv import load_dotenv
 
 app = Flask(__name__)
 
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'cred.json'
+secret_key = os.urandom(24)
+app.config['SECRET_KEY'] = secret_key
+
 storage_client = storage.Client()
-rf = Roboflow(api_key="apikey")
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///cars.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
+
+load_dotenv()  # This method loads the environment variables from `.env`
+
+# Now you can safely use the environment variables
+google_creds = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
+roboflow_key = os.getenv('ROBOFLOW_API_KEY')
+
+rf = Roboflow(api_key=roboflow_key)
+
+# Define the Car model
+class Car(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    make = db.Column(db.String(80), nullable=False)
+    model = db.Column(db.String(80), nullable=False)
+
+    def __repr__(self):
+        return f'<Car {self.make} {self.model}>'
+
+# Create the database tables
+with app.app_context():
+    db.create_all()
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    cars = Car.query.all()
+    return render_template('index.html', cars=cars)
 
 @app.route('/upload', methods=['POST'])
 def upload_image():
@@ -36,9 +66,9 @@ def upload_image():
         expiration_time = datetime.datetime.utcnow() + datetime.timedelta(hours=1)
         signed_url = blob.generate_signed_url(expiration=expiration_time, method='GET')
 
-        project = rf.workspace().project("cardamage-l4vtd")
+        project = rf.workspace().project("car-damage-rlogo")
         model = project.version(1).model
-        result = model.predict(temp_file_path, confidence=40, overlap=30).json()
+        result = model.predict(temp_file_path, confidence=40).json()
 
         detections = sv.Detections.from_inference(result)
         print("Detections:", detections)  #
@@ -90,8 +120,8 @@ def annotate_image(original_image, detections):
             confidence_percent = int(confidence * 100)  # Convert to percentage
 
             # Smaller font size and thinner text
-            font_scale = 1.0
-            thickness = 2
+            font_scale = 0.6
+            thickness = 1
 
             # Calculate text width & height to create a background rectangle
             text = f"{label} ({confidence_percent}%)"
@@ -102,11 +132,11 @@ def annotate_image(original_image, detections):
             rect_end = (int(bbox[0] + text_width + 2), int(bbox[1]))
 
             # Draw the rectangle in white with black border
-            cv2.rectangle(original_image, rect_start, rect_end, (255,255,255), -1)
-            cv2.rectangle(original_image, rect_start, rect_end, (0,0,0), 1)  # black border around the text background
+            #cv2.rectangle(original_image, rect_start, rect_end, (255,255,255), -1)
+            #cv2.rectangle(original_image, rect_start, rect_end, (0,0,0), 1)  # black border around the text background
 
             # Write text in black for contrast
-            cv2.putText(original_image, text, (int(bbox[0] + 1), int(bbox[1] - 2)), cv2.FONT_HERSHEY_SIMPLEX, font_scale, (0,0,0), thickness)
+            #cv2.putText(original_image, text, (int(bbox[0] + 1), int(bbox[1] - 2)), cv2.FONT_HERSHEY_SIMPLEX, font_scale, (0,0,0), thickness)
 
             # Draw bounding box in green (adjust color and thickness if necessary)
             cv2.rectangle(original_image, (int(bbox[0]), int(bbox[1])), (int(bbox[2]), int(bbox[3])), (0,255,0), 2)
@@ -125,6 +155,26 @@ def get_original_image():
 def get_modified_image():
     modified_image_url = request.args.get('modified_image_url')
     return send_file(modified_image_url, as_attachment=True)
+
+@app.route('/upload_csv', methods=['GET', 'POST'])
+def upload_csv():
+    if request.method == 'POST':
+        csv_file = request.files.get('csvfile')
+        if csv_file:
+            # Read CSV file directly into pandas
+            df = pd.read_csv(csv_file)
+            # Clear existing data (optional, based on your requirements)
+            db.session.query(Car).delete()
+            # Iterate over DataFrame rows
+            for index, row in df.iterrows():
+                car = Car(make=row['MAKE'], model=row['MODEL'])
+                db.session.add(car)
+            db.session.commit()
+            return redirect(url_for('index'))
+        else:
+            return "No file uploaded", 400
+    return render_template('upload_csv.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
