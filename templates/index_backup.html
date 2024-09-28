@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>ClaimTheia - Loss Identification</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            
+            background-color: #fbe5d6 !important;
+           
+        }
+
+        /* Styling the upload area with the car outline */
+        #uploadArea {
+            background-image: url(/static/images/image_car_outline.png);
+            background-repeat: no-repeat;
+            display: inherit;
+            align-items: baseline;
+            background-size: contain;
+            margin-bottom: 20px;
+            height: 400px;
+            flex-wrap: wrap
+        }
+       
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">ClaimTheia - Loss Identification</h1>
+
+        <a href="/upload_csv">Upload your own dataset</a>
+
+        <div class="form-group">
+            <label for="carSelect">Select Car:</label>
+            <select class="form-control" id="carSelect" name="car_id">
+                {% for car in cars %}
+                <option value="{{ car.id }}">{{ car.make }} {{ car.model }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+
+        <form action="/upload" method="post" enctype="multipart/form-data" class="mt-3">
+            <!-- Loss Details -->
+            <div class="form-group" style="width: fit-content;">
+                <input type="text" class="form-control" id="makeInput" name="make" placeholder="Make">
+                <input type="text" class="form-control" id="modelInput" name="model" placeholder="Model">
+                <input type="text" class="form-control" id="yearInput" name="year" placeholder="Year">
+            </div>
+            <div id="uploadArea"></div>
+            <div class="car-outline"></div> <!-- Placeholder for car outline image -->
+            <div class="upload-fields">
+                <!-- Image Uploads -->
+                <div class="custom-file" style="width: fit-content;">
+                    <input type="file" class="custom-file-input" id="imageUpload" name="file" accept=".jpg, .jpeg, .png">
+                    <label class="custom-file-label" for="imageUpload">Upload Pic of Front of Car</label>
+                </div>
+
+                <div class="custom-file" style="width: fit-content;">
+                    <input type="file" class="custom-file-input" id="imageUpload_2" name="file" accept=".jpg, .jpeg, .png">
+                    <label class="custom-file-label" for="imageUpload_2">Upload Picture of Front Door</label>
+                </div>
+            </div>
+
+
+
+
+            <button type="submit" class="btn btn-primary" style="margin: 20px;">Submit</button>
+        </form>
+    </div>
+    <!-- Bootstrap JS and necessary JS for custom file input -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Script for showing file name in custom file input
+        document.querySelectorAll('.custom-file-input').forEach(input => {
+            input.addEventListener('change', function (e) {
+                var fileName = e.target.files[0].name;
+                var nextSibling = e.target.nextElementSibling
+                nextSibling.innerText = fileName
+            })
+        })
+    </script>
+</body>
+</html>
+
+
+
