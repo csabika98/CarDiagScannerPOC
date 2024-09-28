@@ -1,0 +1,17 @@
+[Unit]
+Description=ClaimTheia Service
+After=network.target
+
+[Service]
+User=azureuser
+Group=azureuser
+WorkingDirectory=/home/azureuser/CarDiagScannerPOC
+ExecStart=/home/azureuser/CarDiagScannerPOC/carscanneralpha/bin/python3.11 /home/azureuser/CarDiagScannerPOC/app.py
+Environment="PATH=/home/azureuser/CarDiagScannerPOC/carscanneralpha/bin"
+Restart=always
+RestartSec=10
+StandardOutput=append:/var/log/claimtheia/claimtheia.log
+StandardError=append:/var/log/claimtheia/claimtheia_error.log
+
+[Install]
+WantedBy=multi-user.target
