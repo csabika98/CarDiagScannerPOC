@@ -1,9 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, send_file, session
 from roboflow import Roboflow
 import cv2
-from flask import Flask, render_template, request, redirect, url_for, send_file, session
-from roboflow import Roboflow
-import cv2
 import os
 import numpy as np
 import supervision as sv
@@ -45,8 +42,7 @@ with app.app_context():
 def index():
     cars = Car.query.all()
     return render_template('index.html', cars=cars)
-    cars = Car.query.all()
-    return render_template('index.html', cars=cars)
+
 
 @app.route('/upload', methods=['POST'])
 def upload_image():
