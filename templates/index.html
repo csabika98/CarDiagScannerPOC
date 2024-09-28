@@ -6,7 +6,7 @@
   <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
   <meta content="width=device-width, initial-scale=1, minimum-scale=1" name="viewport"/>
   <meta content="Utilize our advanced Car Diagnostic Scanner powered by Machine Learning to identify damages from your uploaded car images effortlessly." name="description"/>
-  <title>ClaimTheia Scanner</title>
+  <title>ClaimTheia - Loss Identification</title>
 
   <!-- Assets Links -->
   <link href="{{ url_for('static', filename='assets/photo-1551150441-649e0b074fe4.jpeg') }}" rel="shortcut icon" type="image/x-icon"/>
@@ -80,7 +80,7 @@
 <!-- Upload Section (Target for "Scan Now" button) -->
 <section id="upload-section" class="container mt-5 cid-upFyyoclRx">
   <div class="row justify-content-center">
-    <div class="col-12 col-md-6 col-lg-4">
+    <div class="col-12 col-md-5 col-lg-4">
 
       <!-- Button to upload a dataset -->
       <div class="mbr-section-btn align-center mb-4">
@@ -89,8 +89,8 @@
 
       <!-- Car Selection and Image Upload Form -->
       <div class="form-group">
-        <label for="carSelect" class="mbr-fonts-style mb-3 display-7">Select car from the drop-down</label>
-        <select class="form-control" id="carSelect" name="car_id">
+        <label for="carSelect" class="mbr-fonts-style display-7">Select car from the drop-down</label>
+        <select class="form-control mbr-fonts-style display-7" style="font-size: 1.1em; padding: 10px;" id="carSelect" name="car_id">
           {% for car in cars %}
           <option value="{{ car.id }}">{{ car.make }} {{ car.model }}</option>
           {% endfor %}
