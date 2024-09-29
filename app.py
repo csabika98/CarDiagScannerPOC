@@ -59,7 +59,7 @@ def get_cars():
 def index():
     # Redirect to the Next.js frontend
     get_cars()
-    return redirect('http://localhost:3000', code=302)
+    return redirect('http://localhost:80', code=302)
 
 @app.route('/upload', methods=['POST'])
 def upload_image():
