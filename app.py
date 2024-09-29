@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request, redirect, url_for, send_file, session
+from flask import Flask, render_template, request, redirect, url_for, send_file, session, jsonify
+from flask_cors import CORS
 from roboflow import Roboflow
 import cv2
 import os
@@ -9,6 +10,7 @@ from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv
 
 app = Flask(__name__)
+CORS(app)  # This allows cross-origin requests
 
 UPLOAD_FOLDER = 'uploads'
 PROCESSED_FOLDER = 'processed'
@@ -38,25 +40,41 @@ class Car(db.Model):
 with app.app_context():
     db.create_all()
 
-@app.route('/')
+""" @app.route('/')
 def index():
     cars = Car.query.all()
-    return render_template('index.html', cars=cars)
+    return render_template('index.html', cars=cars) """
 
+
+
+@app.route('/api/cars', methods=['GET'])
+def get_cars():
+    cars = Car.query.all()
+    # Convert the Car objects to a list of dictionaries
+    car_list = [{'id': car.id, 'make': car.make, 'model': car.model} for car in cars]
+    return jsonify(car_list), 200
+
+
+@app.route('/')
+def index():
+    # Redirect to the Next.js frontend
+    get_cars()
+    return redirect('http://localhost:3000', code=302)
 
 @app.route('/upload', methods=['POST'])
 def upload_image():
     if 'file' not in request.files:
-        return redirect(request.url)
+        return {"error": "No file part"}, 400
+
     file = request.files['file']
     if file.filename == '':
-        return redirect(request.url)
+        return {"error": "No selected file"}, 400
+
     if file:
-       
         temp_file_path = os.path.join(UPLOAD_FOLDER, file.filename)
         file.save(temp_file_path)
 
-        
+        # Run model prediction
         project = rf.workspace().project("car-damage-rlogo")
         model = project.version(1).model
         result = model.predict(temp_file_path, confidence=40).json()
@@ -64,6 +82,7 @@ def upload_image():
         detections = sv.Detections.from_inference(result)
         print("Detections:", detections)
 
+        # Annotate the image with detection results
         original_image = cv2.imread(temp_file_path)
         annotated_image = annotate_image(original_image, detections)
 
@@ -71,29 +90,21 @@ def upload_image():
         temp_modified_file_path = os.path.join(PROCESSED_FOLDER, 'modified_' + file.filename)
         cv2.imwrite(temp_modified_file_path, annotated_image)
 
-        make = request.form.get('make')
-        model = request.form.get('model')
-        year = request.form.get('year')
-
+        # Construct response data
         damages = []
         for i in range(len(detections.confidence)):
-            label = detections.data['class_name'][i]  
+            label = detections.data['class_name'][i]
+            damages.append({'part': label})
 
-            damages.append({
-                'part': label
-            })
-
-        # Provide local URLs to access the images
         original_image_url = url_for('get_local_image', filename=file.filename)
         modified_image_url = url_for('get_local_image', filename='modified_' + file.filename)
 
-        return render_template('result.html', 
-                               original_image_url=original_image_url, 
-                               modified_image_url=modified_image_url,
-                               make=make, 
-                               model=model, 
-                               year=year,
-                               damages=damages)
+        # Return JSON response
+        return {
+            "original_image_url": original_image_url,
+            "modified_image_url": modified_image_url,
+            "damages": damages
+        }, 200
 
 @app.route('/get_image/<filename>')
 def get_local_image(filename):
@@ -119,27 +130,27 @@ def annotate_image(original_image, detections):
 
     return original_image
 
-@app.route('/upload_csv', methods=['GET', 'POST'])
+@app.route('/upload_csv', methods=['POST'])
 def upload_csv():
-    if request.method == 'POST':
-        csv_file = request.files.get('csvfile')
-        if csv_file:
-         
-            df = pd.read_csv(csv_file)
-         
-            db.session.query(Car).delete()
-          
-            for index, row in df.iterrows():
-                car = Car(make=row['MAKE'], model=row['MODEL'])
-                db.session.add(car)
-            db.session.commit()
-            return redirect(url_for('index'))
-        else:
-            return "No file uploaded", 400
-    return render_template('upload_csv.html')
+    if 'csvfile' not in request.files:
+        return {"error": "No file uploaded"}, 400
+
+    csv_file = request.files.get('csvfile')
+    if csv_file:
+        df = pd.read_csv(csv_file)
+        db.session.query(Car).delete()
+
+        for index, row in df.iterrows():
+            car = Car(make=row['MAKE'], model=row['MODEL'])
+            db.session.add(car)
+        db.session.commit()
+
+        return {"message": "CSV uploaded and database updated"}, 200
+    else:
+        return {"error": "No file uploaded"}, 400
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80, debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
 
 
 
