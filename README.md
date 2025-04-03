@@ -1,4 +1,4 @@
-﻿# Car Diagnostic Scanner POC
+# Car Diagnostic Scanner POC
 ## Computer Vision-based Gen AI System for Car Damage Detection
 
 ## Screenshots
@@ -20,7 +20,7 @@
 ![image](https://github.com/csabika98/CarDiagScannerPOC/assets/68144659/25395792-46bf-4196-9159-bee001f95a05)
 
 
-A proof-of-concept application that uses computer vision (Roboflow) to analyze car images for potential damages or issues.
+A proof-of-concept application that uses computer vision to analyze car images for potential damages or issues.
 
 - **Backend**: Python
 - **Frontend**: Next.js (connected via API)
