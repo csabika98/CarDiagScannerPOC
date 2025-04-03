@@ -1,0 +1,983 @@
+.partsOverview {
+  margin: 0;
+  position: relative; /* Change to relative to work within the container */
+  top: 435px;
+  left: 25px;
+  font-size: var(--font-size-9xl);
+  font-weight: 600;
+  font-family: var(--font-raleway);
+  width: 882px; /* Adjust width to match container */
+  height: auto; /* Make sure the height adjusts with content */
+  padding-bottom: 450px; /* Add padding to give space at the bottom */
+}
+
+
+.overviewElements, .overviewElements1, .overviewElements2, .overviewElements3 {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  border: 0;
+  background-color: var(--color-gray-600);
+  border-radius: var(--br-mini);
+  width: 882px;
+  height: 140px;
+  margin-bottom: 10px; /* Add space between each card */
+  position: relative; /* Use relative to stack elements naturally */
+}
+
+
+.estimatedRepairCost,
+.inr80052 {
+  position: absolute;
+  top: 14px;
+  left: 0;
+  font-weight: 500;
+  display: inline-block;
+  width: 145.5px;
+}
+.estimatedRepairCost {
+  top: 0;
+  font-size: var(--font-size-xs);
+  font-weight: 300;
+  width: 146.7px;
+}
+.repairCost {
+  position: absolute;
+  top: 58px;
+  left: 0.3px;
+  width: 146.7px;
+  height: 41px;
+}
+.emptyLabel,
+.estimatedReplaceCost {
+  position: absolute;
+  top: 13px;
+  left: 0;
+  font-weight: 500;
+  display: inline-block;
+  width: 93.7px;
+}
+.estimatedReplaceCost {
+  top: 0;
+  font-size: var(--font-size-xs);
+  font-weight: 300;
+  width: 159px;
+}
+.replaceCost {
+  position: absolute;
+  top: 59px;
+  left: 138px;
+  width: 159px;
+  height: 40px;
+}
+.front,
+.frontLabel {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.front {
+  margin: 0;
+  font-size: inherit;
+  font-weight: 500;
+  font-family: inherit;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+.front2 {
+  position: absolute;
+  top: 800px;
+  left: 170px;
+  width: 56.7px;
+  height: 22px;
+  font-size: var(--font-size-lg);
+ 
+
+}
+.front3 {
+  position: absolute;
+  top: 950px;
+  left: 170px;
+  width: 56.7px;
+  height: 22px;
+  font-size: var(--font-size-lg);
+ 
+
+}
+.frontLabel {
+  width: 56.7px;
+  height: 22px;
+  font-size: var(--font-size-lg);
+}
+.dents {
+  position: relative;
+}
+.dentsFront,
+.scratchesFront {
+  position: absolute;
+  top: 29px;
+  left: 0.3px;
+  border-radius: var(--br-11xl);
+  background-color: var(--color-firebrick-200);
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: var(--padding-11xs) var(--padding-3xs);
+  white-space: nowrap;
+}
+.modal {
+  z-index:9999;
+  position: fixed; /* Use fixed for full-page overlay */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;  /* Adjust width as needed */
+  max-width: fit-content; /* Set a maximum width */
+  background-color: white; /* Modal background color */
+  padding: 20px;  /* Add padding inside the modal */
+  border-radius: 10px; /* Optional: Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for effect */
+  
+}
+/* Add styling for the X button */
+.closeButton {
+  position: absolute;
+  top: -40px;
+  right: -5px;
+  background: transparent;
+  border: none;
+  font-size: 50px;
+  cursor: pointer;
+  color: #333;
+}
+
+.closeButton:hover {
+  color: #000; /* Optional: Hover color */
+}
+.damagePart {
+  font-size: 1rem; /* Adjust the font size to make it smaller */
+  white-space: nowrap; /* Prevent the text from breaking into a new line */
+}
+
+.scratchesFront {
+  left: 62px;
+  background-color: var(--color-indianred);
+}
+.frontLabelParent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 138px;
+  height: 45px;
+  font-size: var(--font-size-3xs);
+}
+.costBreakdown {
+  position: absolute;
+  top: 496px;
+  left: 167px;
+  width: 297px;
+  height: 99px;
+}
+
+
+
+.estimatedRepairCost1 {
+  top: 0;
+  font-size: var(--font-size-xs);
+  font-weight: 300;
+}
+.costValues,
+.div,
+.estimatedRepairCost1 {
+  position: absolute;
+  left: 0;
+}
+.costValues {
+  top: 56px;
+  width: 119px;
+  height: 41px;
+}
+.div {
+  top: 14px;
+  font-weight: 500;
+}
+.backLabel,
+.costValues1 {
+  position: absolute;
+  top: 56px;
+  left: 132px;
+  width: 129px;
+  height: 41px;
+}
+.backLabel {
+  top: 0;
+  left: 0;
+  width: 43px;
+  height: 22px;
+}
+.scratchesBack {
+  position: absolute;
+  top: 27px;
+  left: 0;
+  border-radius: var(--br-11xl);
+  background-color: var(--color-indianred);
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: var(--padding-11xs) var(--padding-3xs);
+  white-space: nowrap;
+  font-size: var(--font-size-3xs);
+}
+.backDamage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 76px;
+  height: 43px;
+  font-size: var(--font-size-lg);
+}
+.costSummary,
+.flatViewImage {
+  position: absolute;
+  top: 651px;
+  left: 173px;
+  width: 261px;
+  height: 97px;
+}
+.flatViewImage {
+  top: 0;
+  left: 3px;
+  border-radius: var(--br-11xl);
+  background-color: var(--color-gray-800);
+  width: 100%;
+  height: 100%;
+}
+.flatView1 {
+  position: relative;
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  font-family: var(--font-inter);
+  color: var(--color-white);
+  text-align: left;
+  padding-left: var(--padding-xl);
+  padding-right: var(--padding-xl);
+}
+.flatView {
+  cursor: pointer;
+  border: 1px solid var(--color-royalblue-100);
+  padding: var(--padding-8xs) var(--padding-5xs);
+  background-color: var(--color-gray-800);
+  position: absolute;
+  top: 3px;
+  left: 0;
+  border-radius: var(--br-11xl);
+  box-sizing: border-box;
+  width: 153px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+.flatView:hover {
+  background-color: var(--color-gainsboro-100);
+  border: 1px solid var(--color-dodgerblue);
+  box-sizing: border-box;
+}
+.flatViewImageParent,
+.partsIcon {
+  position: absolute;
+  top: 23px;
+  left: 336px;
+  width: 153px;
+  height: 35px;
+}
+.partsIcon {
+  height: 100%;
+  width: 75.56%;
+  top: 0;
+  right: 24.44%;
+  bottom: 0;
+  left: 0;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+  object-fit: contain;
+}
+.partsIconVisibleFront {
+  height: 100%;
+  width: 75.56%;
+  top: 0;
+  right: 24.44%;
+  bottom: 0;
+  left: -150px;
+  position: absolute;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+  object-fit: contain;
+}
+.groupChild,
+.groupContainer,
+.groupWrapper {
+  cursor: pointer;
+  border: 0;
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+}
+.groupContainer,
+.groupWrapper {
+  padding: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 42.7px;
+  height: 42.7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.groupContainer {
+  top: 149px;
+}
+
+.partsIconParent {
+  position: absolute;
+  top: 149px; /* Same as groupDiv for vertical alignment */
+  left: 360px; /* Adjust this to match your desired horizontal alignment */
+  width: 42.7px;
+  height: 191.7px;
+}
+.groupParentVisibleFront {
+  position: absolute;
+  top: 0px;
+  left: 202px;
+  width: 42.7px;
+  height: 191.7px;
+}
+
+.groupParentRightVisibleFront {
+  position: absolute;
+  top: 0px;
+  left: 202px;
+  width: 42.7px;
+  height: 191.7px;
+}
+
+.groupParentRightVisibleBack {
+  position: absolute;
+  top: 0px;
+  left: 202px;
+  width: 42.7px;
+  height: 191.7px;
+}
+
+.groupParentVisibleBack {
+  position: absolute;
+  top: 0px;
+  left: 202px;
+  width: 42.7px;
+  height: 191.7px;
+}
+
+.groupDivVisibleBack {
+  position: absolute;
+  top: 70px;
+  left: -190px;
+  width: 42.7px;
+  height: 191.7px;
+}
+
+.partsIconParent {
+  height: 40.84%;
+  width: 23.62%;
+  top: 11.32%;
+  right: 40.25%;
+  bottom: 47.84%;
+  left: 36.13%;
+}
+
+/* Assuming the center should be the middle between groupDiv and groupParent */
+.groupDiv {
+  position: absolute;
+  top: 70px;
+  left: -40px;
+  width: 42.7px;
+  height: 191.7px;
+}
+
+.groupParent {
+  position: absolute;
+  top: 0px;
+  left: 202px;
+  width: 42.7px;
+  height: 191.7px;
+}
+
+.groupDivVisibleFront {
+  position: absolute;
+  top: 70px;
+  left: -190px;
+  width: 42.7px;
+  height: 191.7px;
+}
+.reportTime28032024 {
+  position: absolute;
+  top: 33px;
+  left: 765px;
+  font-size: var(--font-size-3xs);
+  color: var(--color-gray-300);
+  white-space: nowrap;
+}
+.reportTime {
+  position: absolute;
+  top: 196px;
+  left: 359px;
+  border-radius: var(--br-xl);
+  background-color: var(--color-gray-400);
+  width: 930px;
+  height: auto; /* Let height expand with content */
+  max-height: 80vh; /* Optional: Limit the max height to prevent overflow */
+  overflow-y: auto; /* Add vertical scrolling if content overflows */
+  text-align: left;
+  font-size: var(--font-size-3xl);
+  color: var(--color-white);
+  font-family: var(--font-inter);
+  padding-bottom: 20px; /* Add padding at the bottom to prevent content from being cut off */
+}
+
+.carParts,
+.damageDetailsContent,
+.parts2 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.damageDetailsContent {
+  align-self: stretch;
+  gap: var(--gap-lg);
+}
+
+
+.damageAnalysisContainerInner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  margin: 0 auto;
+}
+.damageAnalysisContainerChild,
+.frameChild1 {
+  cursor: pointer;
+  border: 0;
+  background-color: transparent;
+}
+.frameChild1 {
+  width: 100%;
+  height: 100%;
+}
+.damageAnalysisContainerChild {
+  padding: 0;
+  width: 10%; /* Change to relative width */
+  height: auto; /* Let it adjust height automatically */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.damageAnalysisContainerInner1,
+.frameChild3 {
+  cursor: pointer;
+  border: 0;
+  background-color: transparent;
+  filter: drop-shadow(0 3px 9px rgba(0, 0, 0, 0.53));
+
+}
+
+.damageAnalysisContainerInner1 {
+  padding: 0;
+  position: absolute;
+  top: 18.4px;
+  left: 2px;
+  width: 172px;
+  height: 172px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.damageAnalysisContainerItem {
+  position: absolute;
+  top: 0;
+  left: 45px;
+  width: 342.5px;
+  height: 73.4px;
+
+}
+
+.damageAnalysisContainer {
+  height: 358.7px;
+  width: 387.5px;
+  position: absolute;
+  margin: 0 !important;
+  bottom: -137.3px;
+  left: -386px;
+}
+.leftFrontAnalysisChild {
+  width: 321px;
+  height: 245px;
+  position: relative;
+  border-radius: var(--br-xl);
+  background-color: var(--color-gray-400);
+  border: 0.5px solid var(--color-white);
+  box-sizing: border-box;
+  display: none;
+  max-width: 100%;
+}
+
+.leftFrontAnalysisItem {
+  width: 123px;
+  height: 15px;
+  display: none;
+}
+.photosPlaceholder,
+.uploadedPhotos {
+  position: relative;
+  flex-shrink: 0;
+}
+.uploadedPhotos {
+  font-weight: 500;
+  display: none;
+}
+.photosPlaceholder {
+  color: var(--color-gray-300);
+}
+.uploadedPhotosTitle {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 7px;
+}
+.photoRowOne {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--br-5xs);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.photoRowTwo {
+  position: absolute;
+  top: 41.7px;
+  left: 26.5px;
+  backdrop-filter: blur(4px);
+  border-radius: var(--br-12xs);
+  background-color: var(--color-gray-700);
+  width: 13.5px;
+  height: 3.3px;
+
+}
+.photoRowOneParent {
+  height: 65px;
+  flex: 1;
+  position: relative;
+
+}
+.rectangleIcon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--br-3xs);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.frameChild4 {
+  width: 100%;
+  height: 100%;
+}
+.frameChild4LeftBack {
+  width: 100%;
+  height: 100%;
+}
+.frameChild4RightFront {
+  width: 100%;
+  height: 100%;
+}
+.frameChild4RightBack {
+  width: 100%;
+  height: 100%;
+}
+.photosGrid,
+.uploadedPhotosContent {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.photosGrid {
+  align-self: stretch;
+  flex-direction: row;
+  gap: var(--gap-5xs);
+}
+.uploadedPhotosContent {
+  width: 138px;
+  flex-direction: column;
+  gap: var(--gap-4xs);
+}
+.damagedParts1,
+.total {
+  position: relative;
+
+}
+.damagedParts1 {
+  text-decoration: none;
+  font-weight: 500;
+  color: inherit;
+}
+.total {
+  color: var(--color-gray-300);
+}
+.damagedParts,
+.uploadedPhotosContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--gap-4xs);
+}
+.uploadedPhotosContainer {
+  flex: 1;
+  flex-direction: column;
+  gap: var(--gap-mini);
+}
+.frameChild5 {
+  width: 100%;
+  height: 100%;
+}
+.badgeBackgroundParent {
+  align-self: stretch;
+  height: 65px;
+  position: relative;
+
+}
+.leftFrontDamagePhotos,
+.recommendationBadge {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.recommendationBadge {
+  width: 65px;
+  flex-direction: column;
+  padding: var(--padding-5xl) 0 0;
+  box-sizing: border-box;
+}
+.leftFrontDamagePhotos {
+  align-self: stretch;
+  flex-direction: row;
+  gap: var(--gap-11xs);
+  font-size: var(--font-size-xs);
+}
+.leftFrontBumper {
+  font-weight: 600;
+}
+.outerPartsLeftContainer {
+  position: relative;
+
+}
+.leftFrontSummary {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--gap-3xs);
+  min-width: 137px;
+}
+.frameChild6 {
+  height: 65px;
+  width: 65px;
+  position: relative;
+  border-radius: var(--br-3xs);
+  background-color: var(--color-gray-400);
+  display: none;
+}
+.editIconShape {
+  height: 18px;
+  width: 18px;
+  position: relative;
+
+}
+.rectangleContainer {
+  cursor: pointer;
+  border: 0;
+  padding: var(--padding-5xl) var(--padding-4xl) var(--padding-4xl)
+    var(--padding-5xl);
+  background-color: var(--color-gray-400);
+  border-radius: var(--br-3xs);
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+}
+
+.leftFrontDetails {
+  align-self: stretch;
+  flex-direction: row;
+  gap: var(--gap-5xs);
+  font-size: var(--font-size-3xs);
+}
+.leftFrontAnalysis,
+.photos {
+  max-width: 100%;
+}
+.leftFrontAnalysis {
+  flex: 1;
+  border-radius: var(--br-xl);
+  background-color: var(--color-gray-400);
+  border: 0.5px solid var(--color-white);
+  box-sizing: border-box;
+  flex-direction: column;
+  padding: 15px var(--padding-mid) var(--padding-4xl) var(--padding-lg);
+  gap: var(--gap-lg);
+ 
+}
+.photos {
+  width: 321px;
+  flex-direction: row;
+  position: relative;
+  font-size: var(--font-size-xl);
+  color: var(--color-white);
+}
+.reportTimeContainer {
+  align-self: stretch;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: var(--gap-base);
+}
+
+
+
+@media screen and (max-width: 450px) {
+  .partsOverview {
+    font-size: var(--font-size-3xl);
+  }
+  .div,
+  .emptyLabel,
+  .inr80052 {
+    font-size: var(--font-size-lg);
+  }
+}
+/* Add this CSS to your styles */
+@keyframes highlightAnimation {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+}
+
+.animate-highlight {
+  animation: highlightAnimation 0.3s ease-in-out;
+}
+
+.groupChild {
+  max-width: 100%; /* Ensure the image scales properly */
+  height: auto;
+
+}
+
+.frameChild4,
+.rectangleIcon {
+  position: absolute;
+  margin: 0 !important;
+}
+.frameChild4 {
+  height: 73.4px;
+  top: 90px;
+
+  left: -150px;
+}
+.rectangleIcon {
+  height: 150px;
+  width: 150px;
+  top: 65px;
+  left: 110px;
+}
+
+.frameChild4LeftBack,
+.rectangleIconLeftBack {
+  position: absolute;
+  margin: 0 !important;
+}
+.frameChild4LeftBack {
+  height: 73.4px;
+  top: 230px;
+  /* z-index: 2; */
+  left: -150px;
+}
+.rectangleIconLeftBack {
+  height: 150px;
+  width: 150px;
+  top: 255px;
+  left: 110px;
+  transform: scaleY(-1);
+}
+
+.frameChild4RightFront,
+.rectangleIconRightFront {
+  position: absolute;
+  margin: 0 !important;
+}
+.frameChild4RightFront {
+  height: 73.4px;
+  width: 81.4px;
+  top: 88px;
+  /* z-index: 2; */
+  left: 355px;
+}
+.rectangleIconRightFront {
+  height: 150px;
+  width: 150px;
+  top: 65px;
+  left: 270px;
+  transform: scaleX(-1);
+}
+
+.frameChild4RightBack,
+.rectangleIconRightBack {
+  position: absolute;
+  margin: 0 !important;
+}
+.frameChild4RightBack {
+  height: 73.4px;
+  width: 81.4px;
+  top: 235px;
+  /* z-index: 2; */
+  left: 355px;
+}
+.rectangleIconRightBack {
+  height: 150px;
+  width: 150px;
+  top: 255px;
+  left: 270px;
+  transform: scale(-1);
+}
+
+
+/* Initially hidden content */
+.hiddenContent {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.5s ease, max-height 0.5s ease;
+}
+
+/* Visible content */
+.visible {
+  opacity: 1;
+  max-height: 500px; /* Adjust this value based on the content's max height */
+  transition: opacity 0.5s ease, max-height 0.5s ease;
+}
+.overviewBottomBorder {
+  height: 290px;
+  width: 415px;
+  position: absolute;
+  border-radius: var(--br-xl);
+  background-color: var(--color-gray-800);
+  border: 0.5px solid var(--color-white);
+  box-sizing: border-box;
+  top: 70px;
+  left: 457px;
+}
+
+.overviewBottomBorderRightFront {
+  height: 290px;
+  width: 415px;
+  position: absolute;
+  border-radius: var(--br-xl);
+  background-color: var(--color-gray-800);
+  border: 0.5px solid var(--color-white);
+  box-sizing: border-box;
+  top: 70px;
+  left: 437px;
+}
+.overviewBottomBorderRightBack {
+  height: 290px;
+  width: 415px;
+  position: absolute;
+  border-radius: var(--br-xl);
+  background-color: var(--color-gray-800);
+  border: 0.5px solid var(--color-white);
+  box-sizing: border-box;
+  top: 70px;
+  left: 437px;
+}
+.roundImage {
+border-radius: 50%; /* Makes the image round */
+object-fit: cover; /* Keep aspect ratio and fill the frame */
+}
+/* Base container setup */
+.hiddenContent {
+
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  
+}
+
+/* Background Images */
+.frameChild4,
+.frameChild4LeftBack,
+.frameChild4RightFront,
+.frameChild4RightBack {
+ 
+  margin-bottom: 20px; /* Add spacing between sections */
+ 
+}
+
+/* Border and Text containers
+.overviewBottomBorder,
+.overviewBottomBorderRightFront,
+.overviewBottomBorderRightBack {
+  z-index: 1; /* Text above background */
+
+
+/* Headings above other content */
+.leftFrontView {
+  position: relative;
+ 
+  margin-bottom: 10px; /* Add spacing below text */
+}
+
+/* Images should be interactive */
+.groupChild {
+  position: relative;
+}
+
+/* Ensure clickable components are above other elements */
+.imageWrapper {
+  position: relative;
+  cursor: pointer;
+}

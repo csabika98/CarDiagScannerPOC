@@ -1,0 +1,322 @@
+.generalInformation,
+.repairShopPartners {
+  margin: 0;
+  position: absolute;
+  font-weight: 600;
+  font-family: inherit;
+}
+.generalInformation {
+  top: 23px;
+  left: 29px;
+  font-size: var(--font-size-9xl);
+}
+.repairShopPartners {
+  top: 658px;
+  left: 31px;
+  font-size: inherit;
+}
+.viewAllDescription {
+  position: absolute;
+  top: 335px;
+  left: 203px;
+  font-size: var(--font-size-lg);
+  font-weight: 300;
+  font-family: var(--font-inter);
+  color: var(--color-gray-500);
+}
+.vectorIcon {
+  position: absolute;
+  height: 1.13%;
+  width: 1.17%;
+  top: 43.13%;
+  right: 6.79%;
+  bottom: 55.74%;
+  left: 92.04%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.viewAll {
+  text-decoration: none;
+  top: 334px;
+  left: 348px;
+  font-size: var(--font-size-base);
+  color: inherit;
+}
+.fiatBravo2009,
+.uploadedPhotos,
+.viewAll {
+  position: absolute;
+  font-weight: 600;
+}
+.uploadedPhotos {
+  margin: 0;
+  top: 334px;
+  left: 32px;
+  font-size: inherit;
+  font-family: inherit;
+}
+.fiatBravo2009 {
+  top: 165px;
+  left: 29px;
+  font-family: var(--font-inter);
+}
+.carLight11 {
+  height: 16px;
+  width: 16px;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.carDetails {
+  position: relative;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  font-family: var(--font-inter);
+  color: var(--color-white);
+  text-align: left;
+}
+.uploadedPhotosDetails {
+  cursor: pointer;
+  border: 0;
+  padding: var(--padding-sm) var(--padding-base);
+  background-color: var(--color-gray-800);
+  border-radius: var(--br-5xs);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap-3xs);
+  white-space: nowrap;
+}
+.clockRotateLeftLight11Parent:hover,
+.driverInformationContainer:hover,
+.filesLight11Parent:hover,
+.uploadedPhotosDetails:hover {
+  background-color: var(--color-gainsboro-100);
+}
+.uploadedPhotosContainer,
+.uploadedPhotosDetailsWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.uploadedPhotosContainer {
+  position: absolute;
+  top: 260px;
+  left: 32px;
+  flex-direction: column;
+}
+.clockRotateLeftLight11 {
+  height: 14px;
+  width: 14px;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.clockRotateLeftLight11Parent {
+  cursor: pointer;
+  border: 0;
+  padding: var(--padding-sm) var(--padding-base);
+  background-color: var(--color-gray-800);
+  position: absolute;
+  top: 260px;
+  left: 173px;
+  border-radius: var(--br-5xs);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap-3xs);
+  white-space: nowrap;
+}
+.filesLight11 {
+  height: 17px;
+  width: 15px;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.filesLight11Parent {
+  cursor: pointer;
+  border: 0;
+  padding: var(--padding-sm) var(--padding-base);
+  background-color: var(--color-gray-800);
+  position: absolute;
+  top: 202px;
+  left: 216px;
+  border-radius: var(--br-5xs);
+  height: 44px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  gap: var(--gap-3xs);
+  white-space: nowrap;
+}
+.userLight1Icon {
+  height: 15px;
+  width: 13px;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.driverInformationContainer {
+  cursor: pointer;
+  border: 0;
+  padding: var(--padding-sm) var(--padding-base);
+  background-color: var(--color-gray-800);
+  position: absolute;
+  top: 202px;
+  left: 32px;
+  border-radius: var(--br-5xs);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap-3xs);
+  white-space: nowrap;
+}
+.generalInfoContainerChild,
+.partnerLogoIcon,
+.partnerMapPlaceholder {
+  position: absolute;
+  top: 366px;
+  left: 33px;
+  border-radius: var(--br-5xs);
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+}
+.partnerLogoIcon,
+.partnerMapPlaceholder {
+  top: 504px;
+  left: 32px;
+  border-radius: var(--br-3xs);
+}
+.partnerMapPlaceholder {
+  left: 304px;
+}
+.groupIcon,
+.vectorIcon1 {
+  position: absolute;
+  height: 9.61%;
+  width: 56.86%;
+  top: 8.66%;
+  right: 36.06%;
+  bottom: 81.73%;
+  left: 7.08%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.vectorIcon1 {
+  height: 1.13%;
+  width: 1.17%;
+  top: 84.73%;
+  right: 6.79%;
+  bottom: 14.13%;
+  left: 92.04%;
+}
+.viewAll1 {
+  text-decoration: none;
+  position: absolute;
+  top: 659px;
+  left: 348px;
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: inherit;
+}
+.generalInfoContainerItem {
+  position: absolute;
+  top: 366px;
+  left: 166px;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+}
+.generalInfoContainerChild1,
+.generalInfoContainerInner,
+.ongzp04862Icon {
+  position: absolute;
+  top: 366px;
+  left: 304px;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+}
+.generalInfoContainerChild1,
+.ongzp04862Icon {
+  top: 504px;
+  left: 167px;
+}
+.ongzp04862Icon {
+  top: 691px;
+  left: 30px;
+  border-radius: var(--br-3xs);
+  width: 54px;
+  height: 54px;
+}
+.abcCarRepair {
+  position: absolute;
+  top: 709px;
+  left: 91px;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  font-family: var(--font-inter);
+}
+.generalInfoContainer {
+  position: absolute;
+  top: 196px;
+  left: 1308px;
+  border-radius: var(--br-xl);
+  background-color: var(--color-gray-400);
+  width: 452px;
+  height: 786px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--font-size-xl);
+  color: var(--color-white);
+  font-family: var(--font-raleway);
+}
+@media screen and (max-width: 450px) {
+  .generalInformation {
+    font-size: var(--font-size-3xl);
+  }
+  .fiatBravo2009,
+  .repairShopPartners,
+  .uploadedPhotos {
+    font-size: var(--font-size-base);
+  }
+}
+.modal {
+  z-index:9999;
+  position: fixed; /* Use fixed for full-page overlay */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;  /* Adjust width as needed */
+  max-width: fit-content; /* Set a maximum width */
+  background-color: white; /* Modal background color */
+  padding: 20px;  /* Add padding inside the modal */
+  border-radius: 10px; /* Optional: Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for effect */
+  
+}
+/* Add styling for the X button */
+.closeButton {
+  position: absolute;
+  top: -40px;
+  right: -5px;
+  background: transparent;
+  border: none;
+  font-size: 50px;
+  cursor: pointer;
+  color: #333;
+}
+
+.closeButton:hover {
+  color: #000; /* Optional: Hover color */
+}

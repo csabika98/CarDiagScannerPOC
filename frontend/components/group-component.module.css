@@ -1,0 +1,42 @@
+.groupChild {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.cameraLight1Icon {
+  height: 7px;
+  width: 7px;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.separator {
+  position: relative;
+  line-height: 12px;
+}
+.cameraImages,
+.damageLabels {
+  display: flex;
+  justify-content: flex-start;
+}
+.cameraImages {
+  width: 17.4px;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--gap-9xs);
+}
+
+.groupParent {
+  position: absolute;
+  top: 497px;
+  left: 53px;
+  width: 105px;
+  height: 105px;
+  text-align: left;
+  font-size: var(--font-size-5xs);
+  color: var(--color-white);
+  font-family: var(--font-inter);
+}

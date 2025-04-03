@@ -1,0 +1,23 @@
+.text {
+  position: relative;
+  font-size: var(--text-lg-semibold-size);
+  line-height: 28px;
+  font-weight: 600;
+  font-family: var(--text-lg-semibold);
+  color: var(--white);
+  text-align: left;
+}
+.buttonBase {
+  cursor: pointer;
+  border: 0;
+  padding: var(--padding-base) var(--padding-8xl);
+  background-color: var(--color-mediumblue);
+  box-shadow: var(--shadow-xs);
+  border-radius: var(--br-5xs);
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}

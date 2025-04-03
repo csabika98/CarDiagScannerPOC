@@ -1,0 +1,38 @@
+{
+  "name": "spotless-hungry-crocodile",
+  "version": "1.0.0",
+  "description": "A next project generated based on a UIDL document",
+  "main": "index.js",
+  "scripts": {
+    "dev": "cross-env PORT=3000 next",
+    "build": "next build",
+    "start": "cross-env PORT=3000 next start",
+    "export": "next export"
+  },
+  "author": "TeleportHQ",
+  "license": "MIT",
+  "dependencies": {
+    "@chakra-ui/react": "^3.0.0",
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
+    "@mui/material": "^6.1.4",
+    "dotenv": "^16.4.5",
+    "formidable": "^3.5.2",
+    "framer-motion": "^11.11.9",
+    "gridfs-stream": "^1.1.1",
+    "mixitup": "^3.3.1",
+    "mongodb": "^6.9.0",
+    "next": "^15.0.0",
+    "prop-types": "15.7.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-modal": "^3.16.1",
+    "swiper": "^11.1.14"
+  },
+  "engines": {
+    "node": ">=18.x"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
+  }
+}

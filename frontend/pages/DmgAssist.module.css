@@ -1,0 +1,174 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 25px 0 24px;
+}
+.homeIcon {
+  height: 24px;
+  width: 24px;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.nav,
+.navItemButton,
+.navigation {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.navItemButton {
+  cursor: pointer;
+  border: 0;
+  padding: var(--padding-xs);
+  background-color: #05112a;
+  border-radius: var(--br-7xs);
+  overflow: hidden;
+  flex-direction: row;
+}
+.nav,
+.navigation {
+  flex-direction: column;
+  padding: 0 var(--padding-base);
+  gap: 8px;
+}
+.nav {
+  padding: var(--padding-sm) 0 0;
+  gap: 24px;
+}
+.damageDetails {
+  margin: 0;
+  position: absolute;
+  top: 147px;
+  left: 84px;
+  font-size: inherit;
+  font-weight: 600;
+  font-family: inherit;
+}
+.carOverview {
+  position: relative;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  font-family: var(--font-inter);
+  color: var(--color-white);
+  text-align: left;
+}
+.groupChild {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  background-color: var(--color-firebrick-100);
+  width: 100%;
+  height: 100%;
+}
+.div {
+  position: absolute;
+  top: 3px;
+  left: 7px;
+  font-size: var(--font-size-xs);
+  font-family: var(--font-inter);
+  color: var(--color-white);
+  text-align: left;
+}
+.ellipseParent {
+  height: 21px;
+  width: 21px;
+  position: relative;
+}
+.diagramParts,
+.diagramParts1,
+.diagramParts4 {
+  cursor: pointer;
+  border: 0;
+  align-self: stretch;
+  border-radius: var(--br-5xs);
+  flex-direction: row;
+  align-items: center;
+}
+.diagramParts {
+  padding: var(--padding-xs) var(--padding-base);
+  background-color: var(--color-gray-800);
+  display: flex;
+  justify-content: flex-start;
+  gap: var(--gap-3xs);
+}
+.diagramParts1,
+.diagramParts4 {
+  background-color: var(--color-gray-700);
+}
+.diagramParts1 {
+  padding: var(--padding-xs) var(--padding-base);
+  display: flex;
+  justify-content: flex-start;
+  gap: var(--gap-3xs);
+}
+.diagramParts4 {
+  padding: var(--padding-sm) var(--padding-base);
+}
+.diagramParts4:hover,
+.diagramParts5:hover {
+  background-color: var(--color-gainsboro-200);
+}
+.diagramItems,
+.diagramParts4,
+.diagramParts5 {
+  display: flex;
+  justify-content: flex-start;
+}
+.diagramParts5 {
+  cursor: pointer;
+  border: 0;
+  padding: var(--padding-sm) var(--padding-base);
+  background-color: var(--color-gray-700);
+  align-self: stretch;
+  border-radius: var(--br-5xs);
+  flex-direction: row;
+  align-items: center;
+  white-space: nowrap;
+}
+.diagramItems {
+  position: absolute;
+  top: 196px;
+  left: 69px;
+  border-radius: var(--br-xl);
+  background-color: var(--color-gray-800);
+  overflow: hidden;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 17px var(--padding-sm);
+  gap: var(--gap-3xs);
+}
+.desktop,
+.reportTimeParent {
+  position: relative;
+  overflow: hidden;
+}
+.reportTimeParent {
+  height: 1019px;
+  flex: 1;
+  background-color: var(--color-gray-100);
+  min-width: 1196px;
+  max-width: 100%;
+  text-align: left;
+  font-size: var(--font-size-9xl);
+  color: var(--color-white);
+  font-family: var(--font-raleway);
+}
+.desktop {
+  background: linear-gradient(177.09deg, #082051 20.14%, #3926ab 82.53%);
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 0;
+  line-height: normal;
+  letter-spacing: normal;
+  row-gap: 20px;
+}
+
